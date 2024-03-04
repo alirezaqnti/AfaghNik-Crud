@@ -1,0 +1,14 @@
+[flake8]
+ignore = C101, D403, F403, F405, I100, I201, W503, W504, Q000, B032,I100,F401,E251,E501,I201,C901
+exclude =
+    .git,
+    .mypy_cache,
+    __pycache__,
+    env
+filename = *.py
+accept-encodings = utf-8
+max-complexity = 12
+max-linenumber = 500
+max-line-length = 119
+per-file-ignores =
+    core/core/settings/templates/settings.dev.py:F821
