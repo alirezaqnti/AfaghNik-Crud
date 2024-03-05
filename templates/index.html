@@ -126,67 +126,275 @@
     </ul>
   </div>
 
+  <div class="container">
 
-  <main class="form-signin w-100 m-auto">
-    <div class="row">
-      <div class="col-12">
-        <!-- Uploader Dropzone -->
-        <form action="/new-file/" id="zdrop" class="fileuploader center-align">
-          {% csrf_token %}
-          <div id="upload-label" style="width: 200px;">
-            <!-- https://feathericons.dev/?search=upload-cloud&iconset=feather -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-              class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="2">
-              <polyline points="16 16 12 12 8 16" />
-              <line x1="12" x2="12" y1="12" y2="21" />
-              <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
-              <polyline points="16 16 12 12 8 16" />
-            </svg>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="proccesor-tab" data-bs-toggle="tab" data-bs-target="#proccesor"
+          type="button" role="tab" aria-controls="proccesor" aria-selected="true">Add File</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="crud-tab" data-bs-toggle="tab" data-bs-target="#crud" type="button" role="tab"
+          aria-controls="crud" aria-selected="false">View / Edit</button>
+      </li>
 
-          </div>
-          <span class="tittle">Click the Button or Drop Files Here</span>
-        </form>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="proccesor" role="tabpanel" aria-labelledby="proccesor-tab">
+        <div class="form-signin w-100 m-auto">
+          <div class="row">
+            <div class="col-12">
+              <!-- Uploader Dropzone -->
+              <form action="/new-file/" id="zdrop" class="fileuploader center-align">
+                {% csrf_token %}
+                <div id="upload-label" style="width: 200px;">
+                  <!-- https://feathericons.dev/?search=upload-cloud&iconset=feather -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2">
+                    <polyline points="16 16 12 12 8 16" />
+                    <line x1="12" x2="12" y1="12" y2="21" />
+                    <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
+                    <polyline points="16 16 12 12 8 16" />
+                  </svg>
 
-        <!-- Preview collection of uploaded documents -->
-        <div class="preview-container">
-          <div class="collection card" id="previews">
-            <div class="collection-item clearhack valign-wrapper item-template" id="zdrop-template">
-              <div class="d-flex justify-content-center align-items-center p-2 my-2">
-                <div class="col-10 zdrop-info" data-dz-thumbnail>
-                  <div>
-                    <span data-dz-name></span> <small data-dz-size></small>
-                  </div>
-                  <div class="progress">
-                    <div class="determinate" style="width:0" data-dz-uploadprogress></div>
-                  </div>
-                  <div class="dz-error-message"><span data-dz-errormessage></span></div>
                 </div>
-                <div class="col-1 secondary-content actions">
-                  <a href="#!" data-dz-remove class="btn-floating ph red white-text waves-effect waves-light">
-                    <!-- https://feathericons.dev/?search=x&iconset=feather -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                      class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round"
-                      stroke-linejoin="round" stroke-width="2">
-                      <line x1="18" x2="6" y1="6" y2="18" />
-                      <line x1="6" x2="18" y1="6" y2="18" />
-                    </svg>
+                <span class="tittle">Click the Button or Drop Files Here</span>
+              </form>
 
-                  </a>
+              <!-- Preview collection of uploaded documents -->
+              <div class="preview-container">
+                <div class="collection card" id="previews">
+                  <div class="collection-item clearhack valign-wrapper item-template" id="zdrop-template">
+                    <div class="d-flex justify-content-center align-items-center p-2 my-2">
+                      <div class="col-10 zdrop-info" data-dz-thumbnail>
+                        <div>
+                          <span data-dz-name></span> <small data-dz-size></small>
+                        </div>
+                        <div class="progress">
+                          <div class="determinate" style="width:0" data-dz-uploadprogress></div>
+                        </div>
+                        <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                      </div>
+                      <div class="col-1 secondary-content actions">
+                        <a href="#!" data-dz-remove class="btn-floating ph red white-text waves-effect waves-light">
+                          <!-- https://feathericons.dev/?search=x&iconset=feather -->
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                            class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2">
+                            <line x1="18" x2="6" y1="6" y2="18" />
+                            <line x1="6" x2="18" y1="6" y2="18" />
+                          </svg>
+
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <button class="btn btn-primary w-100 py-2 Submit" type="button">Submit</button>
         </div>
       </div>
+      <div class="tab-pane fade" id="crud" role="tabpanel" aria-labelledby="crud-tab">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-10 col-md-8">
+            <div class="form-group">
+              <label for="Passengers">
+                Passengers:
+              </label>
+              <select class="form-select" multiple name="pk" id="Passengers">
+
+              </select>
+            </div>
+          </div>
+          <div class="col-2 col-md-4">
+            <button class="btn btn-dark newPassenger" type="button">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-dark EditPassengers d-none" type="button">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div class="data-form">
+          <form action="" id="UpdateForm">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="Name">Name</label>
+              <input type="text" name="Name" id="Name" class="form-control">
+            </div>
+
+            <div class="row">
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Sex">Sex</label>
+                  <input type="text" name="Sex" id="Sex" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Age">Age</label>
+                  <input type="text" name="Age" id="Age" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="SibSp">SibSp</label>
+                  <input type="text" name="SibSp" id="SibSp" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Survived">Survived</label>
+                  <input type="text" name="Survived" id="Survived" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Pclass">Pclass</label>
+                  <input type="text" name="Pclass" id="Pclass" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Parch">Parch</label>
+                  <input type="text" name="Parch" id="Parch" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Ticket">Ticket</label>
+                  <input type="text" name="Ticket" id="Ticket" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Fare">Fare</label>
+                  <input type="text" name="Fare" id="Fare" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Cabin">Cabin</label>
+                  <input type="text" name="Cabin" id="Cabin" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Embarked">Embarked</label>
+                  <input type="text" name="Embarked" id="Embarked" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row mt-1 justify-content-start align-items-center">
+              <div class="col-2">
+                <button class="btn btn-primary update-btn" type="button">
+                  Update
+                </button>
+                <button class="btn btn-danger destroy-btn ml-1" type="button">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="data-new-form d-none">
+          <form action="" id="NewForm">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="Name">Name</label>
+              <input type="text" name="Name" id="Name" class="form-control">
+            </div>
+            <div class="row">
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Sex">Sex</label>
+                  <input type="text" name="Sex" id="Sex" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Age">Age</label>
+                  <input type="text" name="Age" id="Age" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="SibSp">SibSp</label>
+                  <input type="text" name="SibSp" id="SibSp" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Survived">Survived</label>
+                  <input type="text" name="Survived" id="Survived" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Pclass">Pclass</label>
+                  <input type="text" name="Pclass" id="Pclass" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Parch">Parch</label>
+                  <input type="text" name="Parch" id="Parch" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Ticket">Ticket</label>
+                  <input type="text" name="Ticket" id="Ticket" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Fare">Fare</label>
+                  <input type="text" name="Fare" id="Fare" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Cabin">Cabin</label>
+                  <input type="text" name="Cabin" id="Cabin" class="form-control">
+                </div>
+              </div>
+              <div class="col-3 col-6">
+                <div class="form-group">
+                  <label for="Embarked">Embarked</label>
+                  <input type="text" name="Embarked" id="Embarked" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row mt-1 justify-content-start align-items-center">
+              <div class="col-2">
+                <button class="btn btn-primary submit-btn" type="button">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </div>
-    <button class="btn btn-primary w-100 py-2 Submit" type="button">Submit</button>
-  </main>
+  </div>
   <div class="Loader d-none">
     <span class="foxic-loader"></span>
   </div>
-  <script src="{% static 'main/vendor-special/jquery.min.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="{% static 'main/bootstrap.bundle.min.js' %}"></script>
+  <script src="https://kit.fontawesome.com/c4f527db1d.js" crossorigin="anonymous"></script>
   <script src="{% static 'plugins/Dropzone/min/dropzone.min.js' %}"></script>
   <script src="{% static 'plugins/Dropzone/min/dropzone-amd-module.min.js' %}"></script>
   <script src="{% static 'custom/main.js'%}"></script>

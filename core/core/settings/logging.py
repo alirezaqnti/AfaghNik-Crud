@@ -18,7 +18,8 @@ LOGGING = {
         logger_name: {
             "level": "WARNING",
             "propagate": True,
-        } for logger_name in (
+        }
+        for logger_name in (
             "django",
             "django.request",
             "django.db.backends",

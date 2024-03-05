@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [""]
+    dependencies = []  # type: ignore # noqa
 
     operations = [
         migrations.CreateModel(

@@ -1,9 +1,9 @@
 import os
 import pathlib
-import shutil
 from time import sleep
 from zipfile import ZipFile
 
+import openpyxl
 from django.conf import settings
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
@@ -14,6 +14,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from Main.datasetProccess import NewProccess
+from Main.models import DataSetFile
 
 
 def get_csrf(request):
@@ -40,13 +41,11 @@ class NewProccessAPIView(APIView):
         data = request.data
         files = data.getlist("files")
         for item in files:
-            pathlib.Path(str(item)).suffix
-            try:
-                os.makedirs(os.path.join(settings.MEDIA_ROOT, "News"))
-            except BaseException:
-                pass
-            output_path = os.path.join(settings.MEDIA_ROOT, "News")
-            NewProccess(f"{output_path}/Titanic.xlsx")
+            print(item)
+            file = DataSetFile()
+            file.File = item
+            file.save()
+            NewProccess(f"{file.File.path}")
             sleep(0.25)
 
         return Response(status=status.HTTP_200_OK)
